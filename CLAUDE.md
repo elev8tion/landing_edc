@@ -2,6 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Quick Links
+- [Full Improvement Backlog](./IMPROVEMENTS.md) - Complete list of pending features and enhancements
+
 ## Project Overview
 
 This is a React + TypeScript landing page for "Everyday Christian", a mobile app for faith-based content. The site is built with Vite, uses Tailwind CSS for styling, and React Router for navigation.
