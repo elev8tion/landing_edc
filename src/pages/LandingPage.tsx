@@ -294,7 +294,7 @@ export default function LandingPage() {
             <p className="text-xl text-blue-200">Choose the plan that works best for you</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
                 name: 'Free',
@@ -303,46 +303,40 @@ export default function LandingPage() {
                 features: [
                   'Daily Devotionals',
                   'Bible Browser',
-                  'Basic Prayer Journal',
+                  'Prayer Journal',
                   'Community Access',
-                ],
-                cta: 'Get Started',
-                highlighted: false,
-              },
-              {
-                name: 'Premium',
-                price: '$4.99',
-                period: 'per month',
-                features: [
-                  'Everything in Free',
-                  'Biblical Chat (Unlimited)',
-                  'Advanced Prayer Tracking',
                   'Reading Plans',
                   'Streak Tracking',
                   'Offline Access',
                   'Ad-Free Experience',
                 ],
-                cta: 'Start Free Trial',
-                highlighted: true,
+                cta: 'Get Started',
+                highlighted: false,
+                trial: null,
               },
               {
-                name: 'Lifetime',
-                price: '$49.99',
-                period: 'one-time',
+                name: 'Premium',
+                price: '$35',
+                period: 'per year',
                 features: [
-                  'Everything in Premium',
-                  'Lifetime Access',
+                  'Everything in Free',
+                  'Biblical Chat (150 messages/month)',
+                  'Advanced Prayer Tracking',
                   'Priority Support',
                   'Early Access to Features',
-                  'Support Development',
                 ],
-                cta: 'Get Lifetime Access',
-                highlighted: false,
+                cta: 'Start 3-Day Free Trial',
+                highlighted: true,
+                trial: {
+                  duration: '3 days',
+                  limit: '5 messages per day',
+                  note: 'Automatic subscription after trial if not cancelled',
+                },
               },
             ].map((plan, index) => (
               <div
                 key={index}
-                className={`scroll-animate opacity-0 glass-card p-8 ${
+                className={`scroll-animate opacity-0 glass-card p-8 flex flex-col ${
                   plan.highlighted
                     ? 'ring-2 ring-amber-400 scale-105 shadow-2xl shadow-purple-500/30'
                     : ''
@@ -361,7 +355,7 @@ export default function LandingPage() {
                   <span className="text-4xl font-bold">{plan.price}</span>
                   <span className="text-blue-200 ml-2">{plan.period}</span>
                 </div>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start space-x-3">
                       <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -369,6 +363,19 @@ export default function LandingPage() {
                     </li>
                   ))}
                 </ul>
+                {plan.trial && (
+                  <div className="mb-6 p-4 bg-blue-900/30 rounded-lg border border-blue-500/30">
+                    <p className="text-sm text-blue-200 mb-2">
+                      <strong className="text-amber-400">Trial Details:</strong>
+                    </p>
+                    <ul className="text-sm text-blue-300 space-y-1">
+                      <li>• {plan.trial.duration} free trial</li>
+                      <li>• {plan.trial.limit} during trial</li>
+                      <li className="text-xs text-blue-400 mt-2">* {plan.trial.note}</li>
+                    </ul>
+                  </div>
+                )}
+                {!plan.trial && <div className="mb-6" style={{ height: '140px' }}></div>}
                 <button
                   className={`w-full py-3 rounded-xl font-semibold transition-all ${
                     plan.highlighted
