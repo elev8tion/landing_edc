@@ -35,25 +35,25 @@ export default function PhoneMockup({ image, alt, className = '' }: PhoneMockupP
           <div className="relative bg-black rounded-[2.5rem] overflow-hidden" style={{
             boxShadow: 'inset 0 0 8px rgba(0, 0, 0, 0.8)'
           }}>
-            {/* Notch with camera and speaker */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-20 flex items-center justify-center gap-2" style={{
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-            }}>
-              {/* Speaker grill */}
-              <div className="w-12 h-1 bg-gray-800 rounded-full"></div>
-              {/* Camera lens */}
-              <div className="w-2.5 h-2.5 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full" style={{
-                boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8), 0 0 4px rgba(99, 102, 241, 0.3)'
-              }}></div>
-            </div>
-
             {/* Screenshot */}
             <img
               src={image}
               alt={alt}
-              className="w-full h-auto relative z-10"
+              className="w-full h-auto relative"
               loading="lazy"
             />
+
+            {/* Notch overlay (appears on top of screenshot) */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-black rounded-b-3xl z-20 flex items-center justify-center gap-2" style={{
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+            }}>
+              {/* Speaker grill */}
+              <div className="w-10 h-0.5 bg-gray-800 rounded-full"></div>
+              {/* Camera lens */}
+              <div className="w-2 h-2 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full" style={{
+                boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8), 0 0 3px rgba(99, 102, 241, 0.3)'
+              }}></div>
+            </div>
 
             {/* Screen glass reflection overlay */}
             <div className="absolute inset-0 z-10 pointer-events-none" style={{
