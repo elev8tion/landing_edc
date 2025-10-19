@@ -66,7 +66,7 @@ export default function BlogPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <button className="glass-card glass-card-hover px-8 py-4 font-semibold">
+            <button className="bg-gradient-to-r from-brand-gold via-brand-amber to-brand-gold text-blue-900 font-semibold px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:scale-105">
               Load More Articles
             </button>
           </div>

@@ -46,14 +46,13 @@ export default function LandingPage() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                Rise and Shine,
+                Deepen Your Faith,
                 <br />
-                <span className="text-gradient">Friend!</span>
+                <span className="text-gradient">Stay Connected</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-blue-200 leading-relaxed">
-                Deepen your faith with daily devotionals, biblical guidance, prayer tracking, and a
-                supportive Christian community.
+                Access daily devotionals, insightful Bible studies, prayer reminders, and a supportive network of believers. Empower your spiritual life and connect with God's word every day.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8">
@@ -79,9 +78,8 @@ export default function LandingPage() {
             {/* Right: Phone Mockup */}
             <div className={`relative ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
               <PhoneMockup
-                image="/images/app/01_home_screen.png"
-                alt="Everyday Christian App Home Screen"
-                className="animate-float"
+                image="/images/app/04_bible_browser.png"
+                alt="Everyday Christian App - Bible Browser"
               />
             </div>
           </div>
@@ -124,13 +122,13 @@ export default function LandingPage() {
                   <span className="text-sm font-semibold">Biblical Chat</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold">
-                  Get Biblical Wisdom <span className="text-gradient">Anytime</span>
+                  Instant Biblical <span className="text-gradient">Insight</span>
                 </h3>
                 <p className="text-xl text-blue-200 leading-relaxed">
-                  Ask questions and receive guidance rooted in Scripture. Our AI-powered chat provides biblical wisdom for any situation you face.
+                  Have a question? Get immediate, reliable biblical answers and support when intelligent technology meets Holy Scripture chat. From interpreting Scripture to guidance on prayer and life's hurdles, we're here for you.
                 </p>
                 <ul className="space-y-3">
-                  {['Scripture interpretation', 'Prayer requests', 'Life challenges', 'Faith questions'].map((item, i) => (
+                  {['Scripture interpretation', 'Biblical answers', 'Spiritual support', 'Prayer guidance', 'Interpreting God\'s Word', 'Faith questions'].map((item, i) => (
                     <li key={i} className="flex items-center space-x-3">
                       <Check className="w-5 h-5 text-brand-amber flex-shrink-0" />
                       <span className="text-blue-100">{item}</span>

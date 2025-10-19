@@ -9,8 +9,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-blue-900/80 backdrop-blur-lg shadow-lg' : 'bg-transparent'
+      className={`fixed w-full z-50 transition-all duration-[400ms] ${
+        scrolled ? 'bg-blue-900/80 backdrop-blur-md shadow-glass' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +55,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-blue-900/95 backdrop-blur-lg">
+        <div className="md:hidden bg-blue-900/95 backdrop-blur-md">
           <div className="px-4 pt-2 pb-4 space-y-3">
             <a
               href="#features"
