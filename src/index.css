@@ -7,8 +7,11 @@
     scroll-behavior: smooth;
   }
 
+  html,
   body {
     @apply antialiased;
+    background-color: #050505;
+    overscroll-behavior: none;
   }
 }
 
