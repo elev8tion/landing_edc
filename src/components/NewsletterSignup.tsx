@@ -52,7 +52,7 @@ export default function NewsletterSignup() {
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-gradient-to-r from-amber-400 to-amber-600 text-blue-900 font-semibold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-amber-400/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-gradient-to-r from-brand-amber to-brand-gold text-blue-900 font-semibold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-brand-amber/50 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           aria-label="Subscribe to newsletter"
         >
           {isLoading ? 'Subscribing...' : 'Subscribe'}

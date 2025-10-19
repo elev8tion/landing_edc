@@ -4,7 +4,6 @@ import {
   Heart,
   MessageCircle,
   Calendar,
-  Flame,
   Sparkles,
   ChevronDown,
   Apple,
@@ -16,6 +15,7 @@ import {
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import PhoneMockup from '../components/PhoneMockup';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function LandingPage() {
@@ -30,53 +30,65 @@ export default function LandingPage() {
     <div className="min-h-screen gradient-bg text-white overflow-x-hidden">
       <Navbar />
 
-      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-brand-purple/30 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-blue/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
         </div>
 
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <div className={`space-y-6 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            <div className="inline-flex items-center space-x-2 glass-card px-6 py-3 mb-4">
-              <Sparkles className="w-5 h-5 text-amber-400" />
-              <span className="text-sm text-blue-100">Your Faith Journey Companion</span>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
+            <div className={`text-center lg:text-left space-y-6 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
+              <div className="inline-flex items-center space-x-2 glass-card px-6 py-3 mb-4">
+                <Sparkles className="w-5 h-5 text-brand-amber" />
+                <span className="text-sm text-blue-100">Your Faith Journey Companion</span>
+              </div>
+
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                Rise and Shine,
+                <br />
+                <span className="text-gradient">Friend!</span>
+              </h1>
+
+              <p className="text-xl md:text-2xl text-blue-200 leading-relaxed">
+                Deepen your faith with daily devotionals, biblical guidance, prayer tracking, and a
+                supportive Christian community.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8">
+                <a
+                  href="#"
+                  className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
+                  aria-label="Download Everyday Christian on the App Store"
+                >
+                  <Apple className="w-6 h-6" aria-hidden="true" />
+                  <span>Download on App Store</span>
+                </a>
+                <a
+                  href="#"
+                  className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
+                  aria-label="Get Everyday Christian on Google Play"
+                >
+                  <Smartphone className="w-6 h-6" aria-hidden="true" />
+                  <span>Get it on Google Play</span>
+                </a>
+              </div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              Rise and Shine,
-              <br />
-              <span className="text-gradient">Friend!</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
-              Deepen your faith with daily devotionals, biblical guidance, prayer tracking, and a
-              supportive Christian community.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              <a
-                href="#"
-                className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
-                aria-label="Download Everyday Christian on the App Store"
-              >
-                <Apple className="w-6 h-6" aria-hidden="true" />
-                <span>Download on App Store</span>
-              </a>
-              <a
-                href="#"
-                className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
-                aria-label="Get Everyday Christian on Google Play"
-              >
-                <Smartphone className="w-6 h-6" aria-hidden="true" />
-                <span>Get it on Google Play</span>
-              </a>
+            {/* Right: Phone Mockup */}
+            <div className={`relative ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <PhoneMockup
+                image="/images/app/01_home_screen.png"
+                alt="Everyday Christian App Home Screen"
+                className="animate-float"
+              />
             </div>
           </div>
 
           <a
             href="#features"
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden lg:block"
             aria-label="Scroll to features section"
           >
             <ChevronDown className="w-8 h-8 text-blue-200" />
@@ -96,61 +108,127 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: MessageCircle,
-                title: 'Biblical Chat',
-                description:
-                  'Get biblical wisdom for any situation you face. Ask questions and receive guidance rooted in Scripture.',
-                color: 'text-blue-400',
-              },
-              {
-                icon: Heart,
-                title: 'Prayer Journal',
-                description:
-                  "Track your prayers and see God's faithfulness. Organize by category and witness answered prayers.",
-                color: 'text-pink-400',
-              },
-              {
-                icon: BookOpen,
-                title: 'Bible Browser',
-                description:
-                  'Read any chapter freely with an intuitive interface. Search, bookmark, and explore the Word of God.',
-                color: 'text-purple-400',
-              },
-              {
-                icon: Calendar,
-                title: 'Daily Devotionals',
-                description:
-                  'Grow closer to God with daily reflections. Build consistency with streak tracking.',
-                color: 'text-amber-400',
-              },
-              {
-                icon: BookOpen,
-                title: 'Reading Plans',
-                description:
-                  'Structured Bible reading with daily guidance. Stay on track with your spiritual goals.',
-                color: 'text-green-400',
-              },
-              {
-                icon: Flame,
-                title: 'Streak Tracking',
-                description:
-                  'Build lasting spiritual habits. Stay motivated with visual progress tracking.',
-                color: 'text-orange-400',
-              },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="scroll-animate opacity-0 glass-card glass-card-hover p-8"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <feature.icon className={`w-12 h-12 ${feature.color} mb-4`} />
-                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-blue-200 leading-relaxed">{feature.description}</p>
+          {/* Feature Showcase with Screenshots */}
+          <div className="space-y-24">
+            {/* Biblical Chat */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center scroll-animate opacity-0">
+              <div className="order-2 lg:order-1">
+                <PhoneMockup
+                  image="/images/app/02_biblical_chat.png"
+                  alt="Biblical Chat Feature"
+                />
               </div>
-            ))}
+              <div className="order-1 lg:order-2 space-y-4">
+                <div className="inline-flex items-center space-x-2 glass-card px-4 py-2">
+                  <MessageCircle className="w-5 h-5 text-brand-amber" />
+                  <span className="text-sm font-semibold">Biblical Chat</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold">
+                  Get Biblical Wisdom <span className="text-gradient">Anytime</span>
+                </h3>
+                <p className="text-xl text-blue-200 leading-relaxed">
+                  Ask questions and receive guidance rooted in Scripture. Our AI-powered chat provides biblical wisdom for any situation you face.
+                </p>
+                <ul className="space-y-3">
+                  {['Scripture interpretation', 'Prayer requests', 'Life challenges', 'Faith questions'].map((item, i) => (
+                    <li key={i} className="flex items-center space-x-3">
+                      <Check className="w-5 h-5 text-brand-amber flex-shrink-0" />
+                      <span className="text-blue-100">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Prayer Journal */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center scroll-animate opacity-0">
+              <div className="space-y-4">
+                <div className="inline-flex items-center space-x-2 glass-card px-4 py-2">
+                  <Heart className="w-5 h-5 text-brand-amber" />
+                  <span className="text-sm font-semibold">Prayer Journal</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold">
+                  Track Your <span className="text-gradient">Prayer Journey</span>
+                </h3>
+                <p className="text-xl text-blue-200 leading-relaxed">
+                  Organize your prayers by category and witness God's faithfulness as you see answered prayers over time.
+                </p>
+                <ul className="space-y-3">
+                  {['Category organization', 'Active & answered tracking', 'Personal & private', 'Daily reminders'].map((item, i) => (
+                    <li key={i} className="flex items-center space-x-3">
+                      <Check className="w-5 h-5 text-brand-amber flex-shrink-0" />
+                      <span className="text-blue-100">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <PhoneMockup
+                  image="/images/app/03_prayer_journal.png"
+                  alt="Prayer Journal Feature"
+                />
+              </div>
+            </div>
+
+            {/* Bible Browser */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center scroll-animate opacity-0">
+              <div className="order-2 lg:order-1">
+                <PhoneMockup
+                  image="/images/app/04_bible_browser.png"
+                  alt="Bible Browser Feature"
+                />
+              </div>
+              <div className="order-1 lg:order-2 space-y-4">
+                <div className="inline-flex items-center space-x-2 glass-card px-4 py-2">
+                  <BookOpen className="w-5 h-5 text-brand-amber" />
+                  <span className="text-sm font-semibold">Bible Browser</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold">
+                  Explore God's <span className="text-gradient">Word</span>
+                </h3>
+                <p className="text-xl text-blue-200 leading-relaxed">
+                  Read any chapter freely with an intuitive interface. Search, bookmark, and dive deep into Scripture.
+                </p>
+                <ul className="space-y-3">
+                  {['Multiple translations', 'Search & bookmarks', 'Reading plans', 'Offline access'].map((item, i) => (
+                    <li key={i} className="flex items-center space-x-3">
+                      <Check className="w-5 h-5 text-brand-amber flex-shrink-0" />
+                      <span className="text-blue-100">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Daily Devotionals */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center scroll-animate opacity-0">
+              <div className="space-y-4">
+                <div className="inline-flex items-center space-x-2 glass-card px-4 py-2">
+                  <Calendar className="w-5 h-5 text-brand-amber" />
+                  <span className="text-sm font-semibold">Daily Devotionals</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold">
+                  Grow Closer <span className="text-gradient">Every Day</span>
+                </h3>
+                <p className="text-xl text-blue-200 leading-relaxed">
+                  Start your day with meaningful reflections. Build consistency with streak tracking and daily encouragement.
+                </p>
+                <ul className="space-y-3">
+                  {['Fresh content daily', 'Streak tracking', 'Morning inspiration', 'Spiritual growth'].map((item, i) => (
+                    <li key={i} className="flex items-center space-x-3">
+                      <Check className="w-5 h-5 text-brand-amber flex-shrink-0" />
+                      <span className="text-blue-100">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <PhoneMockup
+                  image="/images/app/05_daily_devotional.png"
+                  alt="Daily Devotional Feature"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -275,7 +353,7 @@ export default function LandingPage() {
               >
                 {plan.highlighted && (
                   <div className="text-center mb-4">
-                    <span className="inline-block bg-gradient-to-r from-amber-400 to-amber-600 text-blue-900 text-sm font-bold px-4 py-1 rounded-full">
+                    <span className="inline-block bg-gradient-to-r from-brand-amber to-brand-gold text-blue-900 text-sm font-bold px-4 py-1 rounded-full">
                       MOST POPULAR
                     </span>
                   </div>
@@ -296,7 +374,7 @@ export default function LandingPage() {
                 <button
                   className={`w-full py-3 rounded-xl font-semibold transition-all ${
                     plan.highlighted
-                      ? 'bg-gradient-to-r from-amber-400 to-amber-600 text-blue-900 hover:shadow-lg hover:shadow-amber-400/50'
+                      ? 'bg-gradient-to-r from-brand-amber to-brand-gold text-blue-900 hover:shadow-lg hover:shadow-brand-amber/50 transform hover:scale-105'
                       : 'glass-card glass-card-hover'
                   }`}
                 >
@@ -394,7 +472,7 @@ export default function LandingPage() {
               />
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-blue-900 font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-amber-400/50 transition-all flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-brand-amber to-brand-gold text-blue-900 font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-brand-amber/50 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
                 aria-label="Send message"
               >
                 <span>Send Message</span>

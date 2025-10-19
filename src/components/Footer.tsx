@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, Mail, Facebook, Twitter, Instagram } from 'lucide-react';
+import { Mail, Facebook, Twitter, Instagram } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -8,9 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-white" />
-              </div>
+              <img
+                src="/images/logos/logo.png"
+                alt="Everyday Christian Logo"
+                className="w-10 h-10"
+              />
               <span className="text-xl font-bold text-white">Everyday Christian</span>
             </div>
             <p className="text-blue-200 text-sm leading-relaxed">
