@@ -78,8 +78,8 @@ export default function LandingPage() {
             {/* Right: Phone Mockup */}
             <div className={`relative ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
               <PhoneMockup
-                image="/images/app/04_bible_browser.png"
-                alt="Everyday Christian App - Bible Browser"
+                image="/images/app/01_home_screen.png"
+                alt="Everyday Christian App - Home Screen"
               />
             </div>
           </div>
