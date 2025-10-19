@@ -1,14 +1,17 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function TermsOfService() {
+  useScrollAnimation();
+
   return (
     <div className="min-h-screen gradient-bg text-white">
       <Navbar />
 
       <div className="pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="glass-card p-8 md:p-12 animate-fadeInUp">
+          <div className="glass-card p-8 md:p-12 scroll-animate opacity-0">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Terms of Service</h1>
             <p className="text-blue-200 mb-8">Last updated: October 19, 2025</p>
 

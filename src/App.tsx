@@ -3,6 +3,7 @@ import LandingPage from './pages/LandingPage';
 import BlogPage from './pages/BlogPage';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

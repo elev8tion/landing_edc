@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   BookOpen,
   Heart,
@@ -16,27 +16,14 @@ import {
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false);
+  useScrollAnimation();
 
   useEffect(() => {
     setIsVisible(true);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fadeInUp');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.scroll-animate').forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -71,15 +58,17 @@ export default function LandingPage() {
               <a
                 href="#"
                 className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
+                aria-label="Download Everyday Christian on the App Store"
               >
-                <Apple className="w-6 h-6" />
+                <Apple className="w-6 h-6" aria-hidden="true" />
                 <span>Download on App Store</span>
               </a>
               <a
                 href="#"
                 className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
+                aria-label="Get Everyday Christian on Google Play"
               >
-                <Smartphone className="w-6 h-6" />
+                <Smartphone className="w-6 h-6" aria-hidden="true" />
                 <span>Get it on Google Play</span>
               </a>
             </div>
@@ -88,6 +77,7 @@ export default function LandingPage() {
           <a
             href="#features"
             className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+            aria-label="Scroll to features section"
           >
             <ChevronDown className="w-8 h-8 text-blue-200" />
           </a>
@@ -370,23 +360,45 @@ export default function LandingPage() {
             <p className="text-xl text-blue-200 mb-8">
               Have questions or feedback? We'd love to hear from you.
             </p>
-            <form className="max-w-md mx-auto space-y-4">
+            <form
+              className="max-w-md mx-auto space-y-4"
+              aria-label="Contact form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+                const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+
+                // TODO: Implement actual form submission
+                console.log('Form submitted:', { email, message });
+                alert('Thank you for your message! We will get back to you soon.');
+                form.reset();
+              }}
+            >
               <input
                 type="email"
+                name="email"
                 placeholder="Your email address"
                 className="w-full px-6 py-4 rounded-xl bg-white/10 border border-blue-400/30 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                aria-label="Email address"
+                required
               />
               <textarea
+                name="message"
                 placeholder="Your message"
                 rows={4}
                 className="w-full px-6 py-4 rounded-xl bg-white/10 border border-blue-400/30 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none"
+                aria-label="Your message"
+                required
+                minLength={10}
               />
               <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-blue-900 font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-amber-400/50 transition-all flex items-center justify-center space-x-2"
+                aria-label="Send message"
               >
                 <span>Send Message</span>
-                <Send className="w-5 h-5" />
+                <Send className="w-5 h-5" aria-hidden="true" />
               </button>
             </form>
           </div>
@@ -406,15 +418,17 @@ export default function LandingPage() {
               <a
                 href="#"
                 className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
+                aria-label="Download Everyday Christian on the App Store"
               >
-                <Apple className="w-6 h-6" />
+                <Apple className="w-6 h-6" aria-hidden="true" />
                 <span>Download on App Store</span>
               </a>
               <a
                 href="#"
                 className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
+                aria-label="Get Everyday Christian on Google Play"
               >
-                <Smartphone className="w-6 h-6" />
+                <Smartphone className="w-6 h-6" aria-hidden="true" />
                 <span>Get it on Google Play</span>
               </a>
             </div>
