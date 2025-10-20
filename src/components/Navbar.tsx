@@ -16,8 +16,9 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex items-center h-16 md:h-20 ${isHomePage ? 'justify-end' : 'justify-between'}`}>
-          {!isHomePage && (
+        <div className={`flex items-center h-16 md:h-20 ${(isHomePage && !scrolled) ? 'justify-end' : 'justify-between'}`}>
+          {/* Show logo on: other pages OR homepage when scrolled */}
+          {(!isHomePage || scrolled) && (
             <Link to="/" className="flex items-center group">
               <img
                 src="/images/logos/logo.png"
