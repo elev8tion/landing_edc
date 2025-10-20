@@ -8,7 +8,6 @@ import { getBlogPosts } from '../lib/blog-api';
 import type { BlogPost } from '../types/database';
 
 export default function BlogPage() {
-  useScrollAnimation();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -19,7 +18,6 @@ export default function BlogPage() {
         const { posts: data } = await getBlogPosts(12, 0);
         setPosts(data);
       } catch (err) {
-        console.error('Error loading blog posts:', err);
         setError('Failed to load blog posts');
       } finally {
         setLoading(false);
@@ -28,6 +26,40 @@ export default function BlogPage() {
 
     loadPosts();
   }, []);
+
+  // Scroll animations for all elements including dynamically loaded blog posts
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fadeInUp');
+            entry.target.classList.remove('opacity-0');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Observe all scroll-animate elements (static and dynamic)
+    const observeElements = () => {
+      document.querySelectorAll('.scroll-animate').forEach((el) => {
+        if (!el.classList.contains('animate-fadeInUp')) {
+          observer.observe(el);
+        }
+      });
+    };
+
+    // Initial observation
+    observeElements();
+
+    // Re-observe when posts load
+    if (!loading && posts.length > 0) {
+      setTimeout(observeElements, 50);
+    }
+
+    return () => observer.disconnect();
+  }, [loading, posts]);
 
   return (
     <div className="min-h-screen gradient-bg text-white">
@@ -68,7 +100,8 @@ export default function BlogPage() {
               {posts.map((post, index) => (
               <article
                 key={post.id}
-                className="glass-card glass-card-hover p-8 group cursor-pointer"
+                className="glass-card glass-card-hover p-8 group cursor-pointer scroll-animate opacity-0"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="mb-4">
                   <span className="inline-block px-4 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-semibold">
