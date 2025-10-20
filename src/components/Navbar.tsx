@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useScrolled } from '../hooks/useScrolled';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const scrolled = useScrolled();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   return (
     <nav
@@ -14,14 +16,16 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          <Link to="/" className="flex items-center group">
-            <img
-              src="/images/logos/logo.png"
-              alt="Everyday Christian Logo"
-              className="h-16 md:h-20 lg:h-24 w-auto transform group-hover:scale-105 transition-transform"
-            />
-          </Link>
+        <div className={`flex items-center h-16 md:h-20 ${isHomePage ? 'justify-end' : 'justify-between'}`}>
+          {!isHomePage && (
+            <Link to="/" className="flex items-center group">
+              <img
+                src="/images/logos/logo.png"
+                alt="Everyday Christian Logo"
+                className="h-12 md:h-16 w-auto transform group-hover:scale-105 transition-transform"
+              />
+            </Link>
+          )}
 
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-blue-100 hover:text-white transition-colors">
