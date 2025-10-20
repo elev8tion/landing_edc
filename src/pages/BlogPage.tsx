@@ -19,8 +19,8 @@ export default function BlogPage() {
         const { posts: data } = await getBlogPosts(12, 0);
         setPosts(data);
       } catch (err) {
+        console.error('Error loading blog posts:', err);
         setError('Failed to load blog posts');
-        console.error(err);
       } finally {
         setLoading(false);
       }
