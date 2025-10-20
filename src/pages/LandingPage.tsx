@@ -44,7 +44,7 @@ export default function LandingPage() {
                 <img
                   src="/images/logos/logo.png"
                   alt="Everyday Christian"
-                  className="h-32 md:h-40 lg:h-48 xl:h-[200px] w-auto"
+                  className="h-40 md:h-52 lg:h-64 xl:h-[300px] w-auto"
                 />
               </div>
 
