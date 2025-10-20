@@ -1,12 +1,33 @@
+import { useState, useEffect } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import NewsletterSignup from '../components/NewsletterSignup';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { blogPosts } from '../data/blogPosts';
+import { getBlogPosts } from '../lib/blog-api';
+import type { BlogPost } from '../types/database';
 
 export default function BlogPage() {
   useScrollAnimation();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadPosts() {
+      try {
+        const { posts: data } = await getBlogPosts(12, 0);
+        setPosts(data);
+      } catch (err) {
+        setError('Failed to load blog posts');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadPosts();
+  }, []);
 
   return (
     <div className="min-h-screen gradient-bg text-white">
@@ -23,10 +44,30 @@ export default function BlogPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+          {loading && (
+            <div className="text-center py-20">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold"></div>
+              <p className="mt-4 text-blue-200">Loading posts...</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="text-center py-20">
+              <p className="text-red-400">{error}</p>
+            </div>
+          )}
+
+          {!loading && !error && posts.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-blue-200">No blog posts yet. Check back soon!</p>
+            </div>
+          )}
+
+          {!loading && !error && posts.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post, index) => (
               <article
-                key={index}
+                key={post.id}
                 className="glass-card glass-card-hover p-8 group cursor-pointer scroll-animate opacity-0"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -45,11 +86,11 @@ export default function BlogPage() {
                 <div className="flex items-center justify-between text-sm text-blue-300 mb-4">
                   <div className="flex items-center space-x-2">
                     <Calendar className="w-4 h-4" />
-                    <span>{post.date}</span>
+                    <span>{new Date(post.published_at || post.created_at).toLocaleDateString()}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
+                    <span>{post.read_time || 5} min read</span>
                   </div>
                 </div>
 
@@ -59,17 +100,22 @@ export default function BlogPage() {
                 </div>
               </article>
             ))}
-          </div>
+            </div>
+          )}
 
-          <div className="mt-16 max-w-2xl mx-auto scroll-animate opacity-0">
-            <NewsletterSignup />
-          </div>
+          {!loading && !error && posts.length > 0 && (
+            <>
+              <div className="mt-16 max-w-2xl mx-auto scroll-animate opacity-0">
+                <NewsletterSignup />
+              </div>
 
-          <div className="mt-8 text-center">
-            <button className="bg-gradient-to-r from-brand-gold via-brand-amber to-brand-gold text-blue-900 font-semibold px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:scale-105">
-              Load More Articles
-            </button>
-          </div>
+              <div className="mt-8 text-center">
+                <button className="bg-gradient-to-r from-brand-gold via-brand-amber to-brand-gold text-blue-900 font-semibold px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:scale-105">
+                  Load More Articles
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
