@@ -136,17 +136,11 @@ export default function BlogPage() {
           )}
 
           {!loading && !error && posts.length > 0 && (
-            <>
-              <div className="mt-16 max-w-2xl mx-auto scroll-animate opacity-0">
-                <NewsletterSignup />
-              </div>
-
-              <div className="mt-8 text-center">
-                <button className="bg-gradient-to-r from-brand-gold via-brand-amber to-brand-gold text-blue-900 font-semibold px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:scale-105">
-                  Load More Articles
-                </button>
-              </div>
-            </>
+            <div className="mt-16 text-center">
+              <button className="bg-gradient-to-r from-brand-gold via-brand-amber to-brand-gold text-blue-900 font-semibold px-8 py-4 rounded-2xl hover:shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:scale-105">
+                Load More Articles
+              </button>
+            </div>
           )}
         </div>
       </div>
