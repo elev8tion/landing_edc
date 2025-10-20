@@ -68,8 +68,7 @@ export default function BlogPage() {
               {posts.map((post, index) => (
               <article
                 key={post.id}
-                className="glass-card glass-card-hover p-8 group cursor-pointer scroll-animate opacity-0"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="glass-card glass-card-hover p-8 group cursor-pointer"
               >
                 <div className="mb-4">
                   <span className="inline-block px-4 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-semibold">
