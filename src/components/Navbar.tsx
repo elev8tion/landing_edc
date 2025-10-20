@@ -19,7 +19,7 @@ export default function Navbar() {
             <img
               src="/images/logos/logo.png"
               alt="Everyday Christian Logo"
-              className="h-12 md:h-16 w-auto transform group-hover:scale-105 transition-transform"
+              className="h-16 md:h-20 lg:h-24 w-auto transform group-hover:scale-105 transition-transform"
             />
           </Link>
 

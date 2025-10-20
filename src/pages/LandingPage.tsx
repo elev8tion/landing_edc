@@ -40,11 +40,6 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Text Content */}
             <div className={`text-center lg:text-left space-y-6 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-              <div className="inline-flex items-center space-x-2 glass-card px-6 py-3 mb-4">
-                <Sparkles className="w-5 h-5 text-brand-amber" />
-                <span className="text-sm text-blue-100">Your Faith Journey Companion</span>
-              </div>
-
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 Deepen Your Faith,
                 <br />
