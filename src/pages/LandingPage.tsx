@@ -40,6 +40,14 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Text Content */}
             <div className={`text-center lg:text-left space-y-6 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
+              <div className="flex justify-center lg:justify-start mb-6">
+                <img
+                  src="/images/logos/logo.png"
+                  alt="Everyday Christian"
+                  className="h-32 md:h-40 lg:h-48 xl:h-[200px] w-auto"
+                />
+              </div>
+
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 Deepen Your Faith,
                 <br />
