@@ -30,35 +30,33 @@ export default function LandingPage() {
     <div className="min-h-screen gradient-bg text-white overflow-x-hidden">
       <Navbar />
 
-      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-brand-purple/30 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-blue/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
-        </div>
-
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-32 pb-20 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Text Content */}
-            <div className={`text-center lg:text-left space-y-6 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-              <div className="flex justify-center lg:justify-start mb-6">
-                <img
-                  src="/images/logos/logo.png"
-                  alt="Everyday Christian"
-                  className="h-40 md:h-52 lg:h-64 xl:h-[300px] w-auto"
-                />
-              </div>
+          {/* Centered Logo at Top */}
+          <div className={`flex justify-center mb-16 ${isVisible ? 'animate-fadeIn' : 'opacity-0'}`}>
+            <img
+              src="/images/logos/logo.png"
+              alt="Everyday Christian"
+              className="h-56 md:h-72 lg:h-80 xl:h-96 w-auto"
+            />
+          </div>
 
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          {/* Content Below Logo */}
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Left: Text Content */}
+            <div className={`text-center lg:text-left space-y-8 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 Deepen Your Faith,
                 <br />
                 <span className="text-gradient">Stay Connected</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-blue-200 leading-relaxed">
-                Access daily devotionals, insightful Bible studies, prayer reminders, and a supportive network of believers. Empower your spiritual life and connect with God's word every day.
+              <p className="text-xl md:text-2xl text-blue-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Intelligent Scripture chat, daily devotionals, prayer tracking, and <span className="text-brand-amber font-semibold">31,103 Bible verses</span> from the World English Bible - all in your pocket, offline-first.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8">
+              {/* App Store Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                 <a
                   href="#"
                   className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
@@ -79,21 +77,16 @@ export default function LandingPage() {
             </div>
 
             {/* Right: Phone Mockup */}
-            <div className={`relative ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-              <PhoneMockup
-                image="/images/app/01_home_screen.png"
-                alt="Everyday Christian App - Home Screen"
-              />
+            <div className={`flex justify-center lg:justify-end ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <div className="w-72 sm:w-96 lg:w-[450px] xl:w-[500px]">
+                <img
+                  src="/images/app/final-mockup-1.png"
+                  alt="Everyday Christian App - Home Screen"
+                  className="w-full h-auto drop-shadow-2xl"
+                />
+              </div>
             </div>
           </div>
-
-          <a
-            href="#features"
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden lg:block"
-            aria-label="Scroll to features section"
-          >
-            <ChevronDown className="w-8 h-8 text-blue-200" />
-          </a>
         </div>
       </section>
 
@@ -115,23 +108,24 @@ export default function LandingPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center scroll-animate opacity-0">
               <div className="order-2 lg:order-1">
                 <PhoneMockup
-                  image="/images/app/02_biblical_chat.png"
+                  image="/images/app/intelligent-scripture-chat-mockup.png"
                   alt="Biblical Chat Feature"
                 />
               </div>
               <div className="order-1 lg:order-2 space-y-4">
                 <div className="inline-flex items-center space-x-2 glass-card px-4 py-2">
                   <MessageCircle className="w-5 h-5 text-brand-amber" />
-                  <span className="text-sm font-semibold">Biblical Chat</span>
+                  <span className="text-sm font-semibold">Scripture Chat</span>
+                  <span className="text-xs bg-brand-amber text-slate-900 px-2 py-0.5 rounded-full font-bold">Premium</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold">
-                  Instant Biblical <span className="text-gradient">Insight</span>
+                  Intelligent <span className="text-gradient">Scripture Chat</span>
                 </h3>
                 <p className="text-xl text-blue-200 leading-relaxed">
-                  Have a question? Get immediate, reliable biblical answers and support when intelligent technology meets Holy Scripture chat. From interpreting Scripture to guidance on prayer and life's hurdles, we're here for you.
+                  Get biblical wisdom and guidance through intelligent conversation. Ask questions about Scripture, faith, and life's challenges. 150 messages per month.
                 </p>
                 <ul className="space-y-3">
-                  {['Scripture interpretation', 'Biblical answers', 'Spiritual support', 'Prayer guidance', 'Interpreting God\'s Word', 'Faith questions'].map((item, i) => (
+                  {['Biblical guidance & wisdom', 'Crisis detection & intervention', '150 messages/month', 'Scripture-based responses', 'Content filtering for safety', 'Professional referrals when needed'].map((item, i) => (
                     <li key={i} className="flex items-center space-x-3">
                       <Check className="w-5 h-5 text-brand-amber flex-shrink-0" />
                       <span className="text-blue-100">{item}</span>
@@ -165,7 +159,7 @@ export default function LandingPage() {
               </div>
               <div>
                 <PhoneMockup
-                  image="/images/app/03_prayer_journal.png"
+                  image="/images/app/prayer-journal-mockup.png"
                   alt="Prayer Journal Feature"
                 />
               </div>
@@ -175,7 +169,7 @@ export default function LandingPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center scroll-animate opacity-0">
               <div className="order-2 lg:order-1">
                 <PhoneMockup
-                  image="/images/app/04_bible_browser.png"
+                  image="/images/app/biblebrowser-mockup.png"
                   alt="Bible Browser Feature"
                 />
               </div>
@@ -225,10 +219,53 @@ export default function LandingPage() {
               </div>
               <div>
                 <PhoneMockup
-                  image="/images/app/05_daily_devotional.png"
+                  image="/images/app/daily-devotional-mockup.png"
                   alt="Daily Devotional Feature"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Privacy-First Section */}
+      <section className="py-20 px-4 relative bg-gradient-to-b from-transparent to-blue-950/30">
+        <div className="max-w-4xl mx-auto">
+          <div className="glass-card p-8 md:p-12 scroll-animate opacity-0">
+            <div className="text-center mb-8">
+              <div className="inline-block p-4 bg-brand-amber/20 rounded-full mb-4">
+                <svg className="w-12 h-12 text-brand-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Your Faith Journey, <span className="text-gradient">Your Privacy</span>
+              </h2>
+              <p className="text-xl text-blue-200 mb-8">
+                Unlike other faith apps that have faced data breaches and sold user data to military contractors and data brokers, Everyday Christian is built privacy-first from the ground up.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                'No user accounts required',
+                'No personal data collected',
+                'No location tracking',
+                'All data stays on your device',
+                'No analytics or behavior monitoring',
+                'Your prayers never sold to data brokers'
+              ].map((item, i) => (
+                <div key={i} className="flex items-center space-x-3">
+                  <Check className="w-5 h-5 text-brand-amber flex-shrink-0" />
+                  <span className="text-blue-100">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 p-4 bg-blue-900/30 rounded-lg border border-blue-800/50">
+              <p className="text-sm text-blue-200">
+                <strong className="text-brand-amber">Note:</strong> Only the AI chat feature uses Google's Gemini API - your messages are sent anonymously with no user identifiers. Everything else works completely offline and stays on your device.
+              </p>
             </div>
           </div>
         </div>
@@ -323,17 +360,18 @@ export default function LandingPage() {
                 period: 'per year',
                 features: [
                   'Everything in Free',
-                  'Biblical Chat (150 messages/month)',
-                  'Advanced Prayer Tracking',
-                  'Priority Support',
-                  'Early Access to Features',
+                  'AI Pastoral Chat (150 messages/month)',
+                  'Enhanced Pastoral Model',
+                  'Trained on 19,750 real examples',
+                  'Crisis detection & intervention',
+                  'Cancel anytime - no renewal unless you want',
                 ],
                 cta: 'Start 3-Day Free Trial',
                 highlighted: true,
                 trial: {
                   duration: '3 days',
                   limit: '5 messages per day',
-                  note: 'Automatic subscription after trial if not cancelled',
+                  note: 'Cancel anytime - will not auto-renew unless you choose',
                 },
               },
             ].map((plan, index) => (
