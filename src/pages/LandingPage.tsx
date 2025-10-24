@@ -57,22 +57,22 @@ export default function LandingPage() {
 
               {/* App Store Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                <a
-                  href="#"
+                <button
+                  onClick={() => alert('Coming Soon! Everyday Christian will be available on the App Store shortly. Sign up for our newsletter below to be notified when we launch!')}
                   className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
                   aria-label="Download Everyday Christian on the App Store"
                 >
                   <Apple className="w-6 h-6" aria-hidden="true" />
                   <span>Download on App Store</span>
-                </a>
-                <a
-                  href="#"
+                </button>
+                <button
+                  onClick={() => alert('Coming Soon! Everyday Christian will be available on Google Play shortly. Sign up for our newsletter below to be notified when we launch!')}
                   className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
                   aria-label="Get Everyday Christian on Google Play"
                 >
                   <Smartphone className="w-6 h-6" aria-hidden="true" />
                   <span>Get it on Google Play</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -360,9 +360,9 @@ export default function LandingPage() {
                 period: 'per year',
                 features: [
                   'Everything in Free',
-                  'AI Pastoral Chat (150 messages/month)',
-                  'Enhanced Pastoral Model',
-                  'Trained on 19,750 real examples',
+                  'Intelligent Scripture Chat (150 messages/month)',
+                  'Biblical wisdom and guidance',
+                  'Scripture-based responses',
                   'Crisis detection & intervention',
                   'Cancel anytime - no renewal unless you want',
                 ],
@@ -418,6 +418,7 @@ export default function LandingPage() {
                 )}
                 {!plan.trial && <div className="mb-6" style={{ height: '140px' }}></div>}
                 <button
+                  onClick={() => alert('Coming Soon! Everyday Christian will be available on the App Store and Google Play shortly. Sign up for our newsletter below to be notified when we launch!')}
                   className={`w-full py-3 rounded-xl font-semibold transition-all ${
                     plan.highlighted
                       ? 'bg-gradient-to-r from-brand-amber to-brand-gold text-blue-900 hover:shadow-lg hover:shadow-brand-amber/50 transform hover:scale-105'
@@ -493,9 +494,12 @@ export default function LandingPage() {
                 const email = (form.elements.namedItem('email') as HTMLInputElement).value;
                 const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
 
-                // TODO: Implement actual form submission
-                console.log('Form submitted:', { email, message });
-                alert('Thank you for your message! We will get back to you soon.');
+                // Create mailto link with pre-filled content
+                const subject = encodeURIComponent('Contact from Everyday Christian Website');
+                const body = encodeURIComponent(`From: ${email}\n\nMessage:\n${message}`);
+                window.location.href = `mailto:contact@everydaychristian.app?subject=${subject}&body=${body}`;
+
+                alert('Thank you for your message! Your email client will open to send the message.');
                 form.reset();
               }}
             >
@@ -539,22 +543,22 @@ export default function LandingPage() {
               Join thousands of believers growing closer to God every day
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#"
+              <button
+                onClick={() => alert('Coming Soon! Everyday Christian will be available on the App Store shortly. Sign up for our newsletter below to be notified when we launch!')}
                 className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
                 aria-label="Download Everyday Christian on the App Store"
               >
                 <Apple className="w-6 h-6" aria-hidden="true" />
                 <span>Download on App Store</span>
-              </a>
-              <a
-                href="#"
+              </button>
+              <button
+                onClick={() => alert('Coming Soon! Everyday Christian will be available on Google Play shortly. Sign up for our newsletter below to be notified when we launch!')}
                 className="glass-card glass-card-hover px-8 py-4 flex items-center justify-center space-x-3 font-semibold"
                 aria-label="Get Everyday Christian on Google Play"
               >
                 <Smartphone className="w-6 h-6" aria-hidden="true" />
                 <span>Get it on Google Play</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
